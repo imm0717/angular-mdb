@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  endpoint: {
+    host: 'localhost',
+    schema: 'http',
+    port: 3000,
+    apiVersion: ''
+  }
 };
 
 /*
