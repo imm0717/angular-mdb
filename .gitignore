@@ -44,3 +44,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Other Files
+ng-uikit-pro-standard-7.5.1.tgz

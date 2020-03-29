@@ -6,6 +6,7 @@ export class User extends BaseModel {
   email: string
   password: string
   rememberMe: boolean
+  accessToken: string
   credential: AuthCredential
 
   constructor( user: object | null = {

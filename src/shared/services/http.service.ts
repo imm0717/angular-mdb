@@ -1,8 +1,10 @@
 import { environment } from "./../../environments/environment";
-import { Injectable } from "@angular/core";
+import { Injectable, ErrorHandler } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { DomSanitizer, SafeStyle } from "@angular/platform-browser";
-import { Observable } from "rxjs";
+import { Observable, throwError, ObservableInput } from "rxjs";
+import { catchError } from 'rxjs/operators';
+import { error } from 'protractor';
 
 @Injectable({ providedIn: "root" })
 export class Http {
@@ -11,6 +13,7 @@ export class Http {
   protected port = environment.endpoint.port;
   protected host = environment.endpoint.host;
   protected assetsHost = "";
+  private errorHandler: ErrorHandler;
 
   constructor(
     private httpClient: HttpClient,
