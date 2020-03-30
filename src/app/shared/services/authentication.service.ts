@@ -1,4 +1,4 @@
-import { User } from './../models/user.model';
+import { User } from '../models/user.model';
 import { JwtService } from './jwt.service';
 import { Injectable } from "@angular/core";
 import { Http } from './http.service';
@@ -11,21 +11,15 @@ import { ReplaySubject, Observable, BehaviorSubject } from 'rxjs';
 })
 export class AuthenticationService {
 
-  private isAuthenticatedSubject: BehaviorSubject<boolean>;
-  public isAuthenticated: Observable<boolean>;
+  private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
+  public isAuthenticated = this.isAuthenticatedSubject.asObservable();
   public isAuth: boolean = false;
 
   constructor(private http: Http, private jwt: JwtService) {
-    this.isAuthenticatedSubject = new BehaviorSubject<boolean>(true);
-    this.isAuthenticated = this.isAuthenticatedSubject.asObservable();
     console.log('Auth Service creation');
     console.log(this.jwt.getToken());
-    
-   }
 
-  public get currentCredentialValue() {
-    return this.isAuthenticatedSubject.value;
-  }
+   }
 
   public refreshCredencials(){
     if (this.jwt.getToken()){
@@ -34,7 +28,7 @@ export class AuthenticationService {
     }else{
       this.purgeAuth();
     }
-      
+
   }
 
   private setAuth(user: User) {
@@ -50,13 +44,13 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
-    
+
     return this.http
       .post<any>("/login", { email: username, password: password })
       .pipe(map(user => {
-        
+
         console.log(`User: ${JSON.stringify(user)}`);
-        
+
         this.setAuth(user)
         return user;
       }))

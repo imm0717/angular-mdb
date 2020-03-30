@@ -1,6 +1,6 @@
-import { AuthenticationService } from './../shared/services/authentication.service';
+import { AuthenticationService } from './shared/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
-import { AuthCredential } from 'src/shared/models/credential.model';
+import { AuthCredential } from 'src/app/shared/models/credential.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
   }
 
   logout(){
-    this.authService.logout()
-    this.router.navigate(['/login'])
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
   ngOnInit(){

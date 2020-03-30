@@ -1,4 +1,4 @@
-import { HttpErrorInterceptor } from './../core/interceptors/http-error.interceptor';
+import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
@@ -28,7 +28,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
     StoreModule.forRoot(reducers, {
-      metaReducers, 
+      metaReducers,
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true,
