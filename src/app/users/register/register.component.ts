@@ -1,6 +1,6 @@
-import { User } from './../../../shared/models/user.model';
+import { User } from '../../shared/models/user.model';
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/shared/services/authentication.service';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { Router } from '@angular/router';
 
 @Component({

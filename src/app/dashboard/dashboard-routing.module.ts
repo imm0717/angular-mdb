@@ -1,4 +1,4 @@
-import { AuthGuard } from './../../shared/helpers/auth.guard';
+import { AuthGuard } from '../shared/helpers/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

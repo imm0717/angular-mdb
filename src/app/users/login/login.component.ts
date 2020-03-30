@@ -1,7 +1,7 @@
 import { map, catchError } from 'rxjs/operators';
-import { AuthenticationService } from '../../../shared/services/authentication.service';
+import { AuthenticationService } from '../../shared/services/authentication.service';
 import { Component, OnInit } from "@angular/core";
-import { User } from "../../../shared/models/user.model";
+import { User } from "../../shared/models/user.model";
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 
@@ -9,8 +9,6 @@ import { Observable, of, throwError } from 'rxjs';
   selector: "app-login",
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.scss"],
-  providers: [AuthenticationService]
-
 })
 export class LoginComponent implements OnInit {
   private loginData: User;
@@ -19,7 +17,7 @@ export class LoginComponent implements OnInit {
     this.loginData = new User();
   }
   ngOnInit() {
-    
+
   }
 
   showLoginData() {
@@ -29,8 +27,8 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.loginData.email, this.loginData.password).subscribe(
       data => {
-        this.router.navigate(['dashboard']);
-      },      
+        this.router.navigate(['/dashboard']);
+      },
       () => console.log('Complete')
     );
   }

@@ -1,4 +1,4 @@
-import { environment } from "./../../environments/environment";
+import { environment } from "../../../environments/environment";
 import { Injectable, ErrorHandler } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { DomSanitizer, SafeStyle } from "@angular/platform-browser";
