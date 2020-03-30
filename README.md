@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AngularMdb
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
@@ -25,3 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+# angular-mdb
+First project with Angular8 and MDBBootstrap
+>>>>>>> 7b5a78e05ab96f866d635d78d6b4afb4b0060c3b
