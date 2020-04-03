@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './users/login/login.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+ // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: HomeComponent, canActivate: [AuthGuard] },
   //{ path: 'auth', loadChildren: './users/users.module#UsersModule' },
   //{ path: 'auth', loadChildren: './users/users.module#UsersModule' },

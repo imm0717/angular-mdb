@@ -1,31 +1,24 @@
-import { User } from '../models/user.model';
-import { JwtService } from './jwt.service';
-import { Injectable } from "@angular/core";
-import { Http } from './http.service';
+import { Injectable } from '@angular/core';
+import { ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ReplaySubject, Observable, BehaviorSubject } from 'rxjs';
-
+import { User } from "./../models";
+import { HttpService } from "./http.service";
+import { JwtService } from './jwt.service';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
-export class AuthenticationService {
+export class UserService {
 
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
-  public isAuth: boolean = false;
 
-  constructor(private http: Http, private jwt: JwtService) {
-    console.log('Auth Service creation');
-    console.log(this.jwt.getToken());
+  constructor(private http: HttpService, private jwt: JwtService) { }
 
-   }
-
-  public refreshCredencials(){
-    if (this.jwt.getToken()){
+  public refreshCredencials() {
+    if (this.jwt.getToken()) {
       this.isAuthenticatedSubject.next(true);
-      this.isAuth = true;
-    }else{
+    } else {
       this.purgeAuth();
     }
 
@@ -34,23 +27,17 @@ export class AuthenticationService {
   private setAuth(user: User) {
     this.jwt.saveToken(user.accessToken)
     this.isAuthenticatedSubject.next(true);
-    this.isAuth = true;
   }
 
-  public purgeAuth() {
+  private purgeAuth() {
     this.jwt.destroyToken();
     this.isAuthenticatedSubject.next(false);
-    this.isAuth = false;
   }
 
   login(username: string, password: string) {
-
     return this.http
       .post<any>("/login", { email: username, password: password })
       .pipe(map(user => {
-
-        console.log(`User: ${JSON.stringify(user)}`);
-
         this.setAuth(user)
         return user;
       }))
@@ -58,7 +45,6 @@ export class AuthenticationService {
 
   logout() {
     this.purgeAuth();
-
   }
 
   register(user: User) {
@@ -67,4 +53,6 @@ export class AuthenticationService {
         this.setAuth(userdata);
       }))
   }
+
+
 }

@@ -1,5 +1,5 @@
 import { AuthenticationService } from './shared/services/authentication.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthCredential } from 'src/app/shared/models/credential.model';
 import { Router } from '@angular/router';
 
@@ -21,7 +21,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
-    console.log('AppComponent');
     this.authService.refreshCredencials();
   }
 }

@@ -1,5 +1,4 @@
-import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { EffectsModule } from '@ngrx/effects';
@@ -15,12 +14,10 @@ import { metaReducers, reducers } from './reducers';
 import { UsersRoutingModule } from './users/users-routing.module';
 import { UsersModule } from './users/users.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
-  declarations: [AppComponent],
-  providers:[
-    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true}
-  ],
+  declarations: [AppComponent],  
   imports: [
     BrowserModule,
     UsersRoutingModule,
@@ -36,6 +33,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
+    CoreModule,
     UsersModule,
     DashboardModule
     ],
