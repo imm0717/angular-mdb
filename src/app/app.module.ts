@@ -11,16 +11,14 @@ import { AppComponent } from "./app.component";
 import { AppEffects } from './app.effects';
 //import { DashboardModule } from './dashboard/dashboard.module';
 import { metaReducers, reducers } from './reducers';
-import { UsersRoutingModule } from './users/users-routing.module';
 import { UsersModule } from './users/users.module';
-import { DashboardModule } from './dashboard/dashboard.module';
 import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],  
   imports: [
     BrowserModule,
-    UsersRoutingModule,
     AppRoutingModule,
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
@@ -34,8 +32,8 @@ import { CoreModule } from './core/core.module';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
     CoreModule,
-    UsersModule,
-    DashboardModule
+    SharedModule,
+    UsersModule
     ],
   bootstrap: [AppComponent]
 })

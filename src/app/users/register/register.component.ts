@@ -1,20 +1,18 @@
-import { User } from '../../shared/models/user.model';
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { Router } from '@angular/router';
+import { UserService, User } from 'src/app/core';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  providers: [AuthenticationService]
+  providers: [UserService]
 })
 export class RegisterComponent implements OnInit {
 
   private registerData: User;
 
-  constructor(private authService: AuthenticationService, private router: Router) {
-    this.registerData = new User();
+  constructor(private authService: UserService, private router: Router) {
    }
 
   ngOnInit() {

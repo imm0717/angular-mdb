@@ -16,6 +16,7 @@ export class UserService {
   constructor(private http: HttpService, private jwt: JwtService) { }
 
   public refreshCredencials() {
+    console.log('Refreshing Credentials')
     if (this.jwt.getToken()) {
       this.isAuthenticatedSubject.next(true);
     } else {

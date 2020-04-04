@@ -1,7 +1,6 @@
-import { AuthenticationService } from './shared/services/authentication.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthCredential } from 'src/app/shared/models/credential.model';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from './core';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +11,7 @@ export class AppComponent implements OnInit {
   title = 'angular-mdb';
   currentCredential : String;
 
-  constructor(private router: Router, private authService: AuthenticationService){
+  constructor(private router: Router, private authService: UserService){
   }
 
   logout(){

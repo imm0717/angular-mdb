@@ -1,10 +1,9 @@
-import { RegisterComponent } from './register/register.component';
-import { NoAuthGuard } from '../shared/helpers/no-auth.guard';
-import { AuthGuard } from '../shared/helpers/auth.guard';
-import { ProfileComponent } from './profile/profile.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard, NoAuthGuard } from '../core';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
@@ -14,7 +13,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class UsersRoutingModule { }
