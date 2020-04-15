@@ -1,0 +1,1 @@
+export * from './role-list/role-list.component';

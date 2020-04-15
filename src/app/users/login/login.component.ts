@@ -31,14 +31,14 @@ export class LoginComponent implements OnInit {
   login() {
 
     this.authService.login(this.loginData.email, this.loginData.password).subscribe(
-      data => {
-        this.router.navigate(['/home']);
+      () => {
+        this.router.navigate(['']);
       },
       () => console.log('Complete')
     );
   }
 
   redirect() {
-    this.router.navigate(['/home'], { relativeTo: this.route });
+    this.router.navigate([''], { relativeTo: this.route });
   }
 }

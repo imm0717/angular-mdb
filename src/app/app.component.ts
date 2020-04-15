@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './core';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,6 @@ import { UserService } from './core';
 export class AppComponent implements OnInit {
   title = 'angular-mdb';
   currentCredential : String;
-
   constructor(private router: Router, private authService: UserService){
   }
 

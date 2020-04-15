@@ -1,27 +1,27 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { MDBBootstrapModule } from "angular-bootstrap-md";
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AppEffects } from './app.effects';
+import { CoreModule } from './core/core.module';
+import { HomeComponent } from './home/home.component';
 //import { DashboardModule } from './dashboard/dashboard.module';
 import { metaReducers, reducers } from './reducers';
-import { UsersModule } from './users/users.module';
-import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { UsersModule } from './users/users.module';
 
 @NgModule({
-  declarations: [AppComponent],  
+  declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
+    CoreModule,
+    SharedModule,
+    UsersModule,
     AppRoutingModule,
-    HttpClientModule,
-    MDBBootstrapModule.forRoot(),
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
@@ -30,11 +30,8 @@ import { SharedModule } from './shared/shared.module';
       }
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([AppEffects]),
-    CoreModule,
-    SharedModule,
-    UsersModule
-    ],
+    EffectsModule.forRoot([AppEffects])
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
