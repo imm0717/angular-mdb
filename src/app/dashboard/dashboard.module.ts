@@ -1,18 +1,14 @@
-import { NavigationModule } from './../main-layout/navigation/navigation.module';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [DashboardComponent],
   imports: [
-    CommonModule,
-    MDBBootstrapModule,
-    DashboardRoutingModule,
-    NavigationModule
+    SharedModule,
+    DashboardRoutingModule
   ]
 })
 export class DashboardModule { }

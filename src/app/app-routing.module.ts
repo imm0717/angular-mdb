@@ -1,21 +1,19 @@
 /* eslint-disable no-unused-vars */
-import { HomeComponent } from './home/home.component';
-import { NgModule } from '@angular/core'
-import { RouterModule, Routes } from '@angular/router'
-import { AuthGuard } from './core'
-import { PageNotFoundComponent } from './shared/pages/page-not-found/page-not-found.component'
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core';
+import { AppLayoutComponent } from './shared';
+import { PageNotFoundComponent } from './shared';
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'home', pathMatch: 'full' },
-  // { path: 'dashboard', component: HomeComponent, canActivate: [AuthGuard] },
-  // { path: 'auth', loadChildren: './users/users.module#UsersModule' },
-  // { path: 'auth', loadChildren: './users/users.module#UsersModule' },
-  // otherwise redirect to home
-  { path: '', component: HomeComponent, canActivate: [AuthGuard], children: [
+  
+  { path: '', component: AppLayoutComponent, canActivate: [AuthGuard], children: [
 
-    { path: 'roles', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)},
+    { path: '', loadChildren: () => import('./dashboard').then(m => m.DashboardModule)},
 
-  ]  },
+    { path: 'roles', loadChildren: () => import('./settings').then(m => m.SettingsModule)},
+
+  ] },
   
   { path: '**', component: PageNotFoundComponent }
 ]

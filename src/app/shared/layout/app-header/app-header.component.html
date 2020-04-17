@@ -10,21 +10,14 @@
       <!-- Links -->
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
+          <a [routerLink]="['']" routerLinkActive="router-link-active"  class="nav-link waves-light" mdbWavesEffect>Dashboard<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a [routerLink]="['/roles']" routerLinkActive="router-link-active"  class="nav-link waves-light" mdbWavesEffect>Roles</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect>Pricing</a>
-        </li>
-  
         <!-- Dropdown -->
         <li class="nav-item dropdown" dropdown>
           <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-            Basic dropdown<span class="caret"></span></a>
+            Settings<span class="caret"></span></a>
           <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
+            <a [routerLink]="['/roles']" class="dropdown-item waves-light" mdbWavesEffect href="#">Roles</a>
             <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
             <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
             <div class="divider dropdown-divider"></div>

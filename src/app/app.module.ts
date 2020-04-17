@@ -7,15 +7,13 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AppEffects } from './app.effects';
-import { CoreModule } from './core/core.module';
-import { HomeComponent } from './home/home.component';
-//import { DashboardModule } from './dashboard/dashboard.module';
+import { CoreModule } from './core'
 import { metaReducers, reducers } from './reducers';
-import { SharedModule } from './shared/shared.module';
-import { UsersModule } from './users/users.module';
+import { SharedModule } from './shared';
+import { UsersModule } from './users';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     CoreModule,
