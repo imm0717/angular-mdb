@@ -1,5 +1,6 @@
+import { Credential } from './../models/credential.model';
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
+import { ReplaySubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from "./../models";
 import { HttpService } from "./http.service";
@@ -13,6 +14,8 @@ export class UserService {
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
 
+  private userCredential: Credential
+
   constructor(private http: HttpService, private jwt: JwtService) { }
 
   public refreshCredencials() {
@@ -25,8 +28,8 @@ export class UserService {
 
   }
 
-  private setAuth(user: User) {
-    this.jwt.saveToken(user.accessToken)
+  private setAuth(credential: Credential) {
+    this.jwt.saveCredential(credential)
     this.isAuthenticatedSubject.next(true);
   }
 
@@ -38,9 +41,10 @@ export class UserService {
   login(username: string, password: string) {
     return this.http
       .post<any>("/login", { email: username, password: password })
-      .pipe(map(user => {
-        this.setAuth(user)
-        return user;
+      .pipe(map(jwtToken => {
+        this.userCredential = { email: username, token: jwtToken.accessToken }
+        this.setAuth(this.userCredential)
+        return this.userCredential;
       }))
   }
 
@@ -49,10 +53,16 @@ export class UserService {
   }
 
   register(user: User) {
-    return this.http.post<User>("/register", user)
-      .pipe(map(userdata => {
-        this.setAuth(userdata);
+    return this.http.post<any>("/register", user)
+      .pipe(map(jwtToken => {
+        this.userCredential = { email: user.email, token: jwtToken.accessToken }
+        this.setAuth(this.userCredential);
       }))
+  }
+
+  getUsers(): Observable<User> {
+    return this.http.get('/users')
+
   }
 
 

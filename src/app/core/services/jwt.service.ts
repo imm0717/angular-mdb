@@ -1,3 +1,4 @@
+import { Credential } from './../models';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,15 +6,15 @@ import { Injectable } from '@angular/core';
 })
 export class JwtService {
 
-  getToken(): String {
-    return window.localStorage['jwtToken'];
+  getToken(): Credential {
+    return window.localStorage['credential'];
   }
 
-  saveToken(token: String) {
-    window.localStorage['jwtToken'] = token;
+  saveCredential(credential: Credential) {
+    window.localStorage['credential'] = JSON.stringify(credential);
   }
 
   destroyToken() {
-    window.localStorage.removeItem('jwtToken');
+    window.localStorage.removeItem('credential');
   }
 }

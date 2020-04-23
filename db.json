@@ -18,14 +18,70 @@
   },
   "users": [
     {
-      "email": "olivier@mail.com",
-      "password": "$2a$10$0XHt.v5NAX9NfCpOiPQG/.152CJzN5lKKOUbX0JFh7XhkTZ5QFxpC",
+      "email": "imm0717@yahoo.com",
+      "password": "$2a$10$DZJtHdDmt1IF/VpAHRo73.l7.cSDGrxX7Ix7kqjxJXf9HUMh2zi7C",
+      "firstname": "Israel",
+      "lastname": "Men Martínez",
       "id": 1
     },
     {
-      "email": "imm0717@yahoo.com",
-      "password": "$2a$10$WpGJMvQDOVjd5LGr.s.AF.aslpHA8erHbdTbZQFZk8eT5kcBQIWte",
+      "email": "yasermen@gmail.com",
+      "password": "$2a$10$kK4mq0iJPkpgCA6rm1GVGOSzADj8qhM8kphORAPR7fqzGDxCeRU2u",
+      "firstname": "Yaser",
+      "lastname": "Men Martínez",
       "id": 2
+    },
+    {
+      "email": "ileanamartinez@yahoo.com",
+      "password": "$2a$10$CEPhU4zFaVPQRFZwXTvBTel5.hLd5plHWUrUF.MnSoYu5GXklBt0K",
+      "firstname": "Ileana",
+      "lastname": "Martínez Alonso",
+      "id": 3
+    },
+    {
+      "email": "israelmen0717@gmail.com",
+      "password": "$2a$10$PmI0kFeNj6Vj/cPidQ7bhehp1XIPkC4zA1iyhvyZS7fJlv8o4aNaa",
+      "id": 4,
+      "firstname": "Israel",
+      "lastname": "Men Martinez"
+    },
+    {
+      "email": "ileana@gmail.com",
+      "password": "$2a$10$kgwDB6WjUvcWYgQPKMN6OuPRMkdR6lOyN8/UAcndyoEXzD1TBba7q",
+      "id": 5,
+      "firstname": "Ileana",
+      "lastname": "Martinez Alonso"
+    },
+    {
+      "email": "luisdiaz@gmail.com",
+      "password": "$2a$10$swXM21CLQF/.Bk/iwGhqlO8z9FGBqqSq09dawgIcvdjIRcC2Gc5u2",
+      "id": 6,
+      "firstname": "Luis",
+      "lastname": "Ortega Diaz"
+    },
+    {
+      "email": "carlos@gmail.com",
+      "password": "$2a$10$dLUD/ig8H07XvKMdzIVLYuItNHZybmlHDfT15f29xTObYcFCuOpUC",
+      "id": 7,
+      "firstname": "Carlos",
+      "lastname": "Garcia Martinez"
+    }
+  ],
+  "roles": [
+    {
+      "roles": "Administrador",
+      "active": true,
+      "id": 1
+    },
+    {
+      "roles": "Editor",
+      "active": true,
+      "id": 2
+    },
+    {
+      "roles": "Guest",
+      "active": true,
+      "id": 3
     }
   ]
 }

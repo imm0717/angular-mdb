@@ -2,29 +2,40 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            <form class="text-center border border-light mx-auto mt-5 p-3 mp-5" #registerForm="ngForm"
-                (ngSubmit)="register()">
-                <p class="h4 mb-4">Sign In</p>
+            <!-- Default form register -->
+            <form class="text-center border border-light p-5" #registerForm="ngForm"
+            (ngSubmit)="register()">
 
-                <!-- Name -->
-                <div class="form-group">
-                    <input type="text" #name="ngModel" [(ngModel)]="registerData.name"
-                        [class.is-invalid]="name.invalid && name.touched" class="form-control" placeholder="Name"
-                        name="name" required>
-                    <div class="text-left invalid-feedback" [class.d-none]="name.valid || name.untouched">Name is
-                        required</div>
+                <p class="h4 mb-4">Sign up</p>
+
+                <div class="alert alert-danger" role="alert" *ngIf="registrationError.active">
+                    {{ registrationError.message }}
+                  </div>
+
+                <div class="form-row mb-4">
+                    <div class="col">
+                        <div class="form-group">
+                            <input type="text" #name="ngModel" [(ngModel)]="registerData.firstname"
+                                [class.is-invalid]="name.invalid && name.touched" class="form-control" placeholder="Name"
+                                name="name" required>
+                            <div class="text-left invalid-feedback" [class.d-none]="name.valid || name.untouched">Name is
+                                required</div>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="form-group">
+                            <input type="text" #lastname="ngModel" [(ngModel)]="registerData.lastname"
+                                [class.is-invalid]="lastname.invalid && lastname.touched" class="form-control"
+                                placeholder="Lastname" name="lastname" required>
+                            <div class="text-left invalid-feedback" [class.d-none]="lastname.valid || lastname.untouched">
+                                Lastname is
+                                required</div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Lastname -->
-                <div class="form-group">
-                    <input type="text" #lastname="ngModel" [(ngModel)]="registerData.lastname"
-                        [class.is-invalid]="lastname.invalid && lastname.touched" class="form-control" placeholder="Lastname"
-                        name="lastname" required>
-                    <div class="text-left invalid-feedback" [class.d-none]="lastname.valid || lastname.untouched">Lastname is
-                        required</div>
-                </div>
-
-                <!-- Email -->
+                <!-- E-mail -->
                 <div class="form-group">
                     <input type="email" #email="ngModel" [(ngModel)]="registerData.email"
                         [class.is-invalid]="email.invalid && email.touched" class="form-control" placeholder="E-mail"
@@ -37,17 +48,27 @@
                 <div class="form-group">
                     <input type="password" #password="ngModel" [(ngModel)]="registerData.password"
                         [class.is-invalid]="password.invalid && password.touched" class="form-control"
-                        placeholder="Password" name="password" required>
-                    <div class="text-left invalid-feedback" [class.d-none]="password.valid || password.untouched">
-                        Password is required</div>
+                        placeholder="Password" name="password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
+                        <div class="text-left invalid-feedback" [class.d-none]="password.valid || password.untouched">
+                            Password is required</div>
+                        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                            At least 8 characters and 1 digit</small>
+                   
                 </div>
 
-                {{ loginData.email }}
+                <!-- Sign up button -->
+                <button mdbBtn color="info" block="true" class="my-4" type="submit"
+                [disabled]="!registerForm.valid">Register</button>
 
-                <button mdbBtn color="info" block="true" class="my-4" type="submit" [disabled]="!registerForm.valid">Register</button>
-               
+                <hr>
+
+                <!-- Terms of service -->
+                <p>By clicking
+                    <em>Sign up</em> you agree to our
+                    <a href="" target="_blank">terms of service</a></p>
+
             </form>
-
+            <!-- Default form register -->
         </div>
         <div class="col-md-3"></div>
     </div>

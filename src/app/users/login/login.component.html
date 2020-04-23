@@ -24,8 +24,6 @@
                         Password is required</div>
                 </div>
 
-                {{ loginData.email }}
-
                 <div class="d-flex justify-content-around">
                     <div>
                         <!-- Remember me -->
@@ -41,10 +39,8 @@
                 <button mdbBtn color="info" block="true" class="my-4" type="submit" [disabled]="!loginForm.valid">Sign
                     in</button>
 
-                <button mdbBtn color="info" block="true" class="my-4" type="button" (click)="redirect()" [disabled]="!loginForm.valid">Redirect</button>
-
                 <!-- Register -->
-                <p>Not a member? <a href="">Register</a></p>
+                <p>Not a member? <a  [routerLink]="['/register']" routerLinkActive="router-link-active">Register</a></p>
 
                 <!-- Social login -->
                 <p>or sign in with:</p>

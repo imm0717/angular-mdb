@@ -9,9 +9,9 @@ const routes: Routes = [
   
   { path: '', component: AppLayoutComponent, canActivate: [AuthGuard], children: [
 
-    { path: '', loadChildren: () => import('./dashboard').then(m => m.DashboardModule)},
+    { path: '', loadChildren: () => import('./dashboard').then(m => m.DashboardModule) },
 
-    { path: 'roles', loadChildren: () => import('./settings').then(m => m.SettingsModule)},
+    { path: 'settings', loadChildren: () => import('./settings').then(m => m.SettingsModule) }    
 
   ] },
   

@@ -1,4 +1,4 @@
 export interface Credential {
-  id: number,
+  email: string,
   token: string
 }

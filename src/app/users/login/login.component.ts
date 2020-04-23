@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from '@angular/router';
-import { UserService, User } from 'src/app/core';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/core';
 
 @Component({
   selector: "app-login",
@@ -8,37 +8,30 @@ import { UserService, User } from 'src/app/core';
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
-  private loginData: User;
+  private loginData = {
+    password: '',
+    email: '',
+    rememberMe: false
+  }
 
-  constructor(private authService: UserService, private router: Router, private route: ActivatedRoute) {
-    this.loginData = {
-      username: '',
-      password: '',
-      email: '',
-      accessToken: '',
-      credential: null
-    }
+  constructor(private authService: UserService, private router: Router) {
   }
 
   ngOnInit() {
 
   }
 
-  showLoginData() {
-    //console.log(this.loginData);
-  }
-
   login() {
 
     this.authService.login(this.loginData.email, this.loginData.password).subscribe(
       () => {
-        this.router.navigate(['']);
+        this.router.navigate(['/']);
       },
       () => console.log('Complete')
     );
   }
 
-  redirect() {
-    this.router.navigate([''], { relativeTo: this.route });
+  redirectToRegister(){
+    this.router.navigate(['/register']);
   }
 }

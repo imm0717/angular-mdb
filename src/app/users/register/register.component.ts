@@ -5,25 +5,38 @@ import { UserService, User } from 'src/app/core';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
-  providers: [UserService]
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
 
-  private registerData: User;
+  private registerData: User
+  private registrationError = {
+    message: '',
+    active: false
+  }
 
   constructor(private authService: UserService, private router: Router) {
-   }
+    this.registerData = {
+      id: null,
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: ''
+    }
+  }
 
   ngOnInit() {
   }
 
-  register(){
+  register() {
     this.authService.register(this.registerData).subscribe(
-      data => {
-        this.router.navigate([''])
+      () => {
+        this.router.navigate(['/'])
       },
-      error => console.log(error)
+      error => {
+        this.registrationError.active = true
+        this.registrationError.message = error.error
+      }
     )
   }
 
